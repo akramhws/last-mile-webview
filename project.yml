@@ -3,21 +3,33 @@ options:
   bundleIdPrefix: ${BUNDLE_ID_PREFIX}
   deploymentTarget:
     iOS: "16.0"
-  createIntermediateGroups: true
+settings:
+  PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_ID}
+  DEVELOPMENT_TEAM: ${TEAM_ID}
+  MARKETING_VERSION: ${APP_VERSION}
+  CURRENT_PROJECT_VERSION: ${BUILD_NUMBER}
+  SWIFT_VERSION: "5.9"
+  ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 targets:
-  App:
+  ${APP_NAME}:
     type: application
     platform: iOS
-    sources:
-      - path: Sources
+    sources: Sources
     info:
-      path: Sources/Info.plist
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_ID}
-        MARKETING_VERSION: ${APP_VERSION}
-        CURRENT_PROJECT_VERSION: ${BUILD_NUMBER}
-        DEVELOPMENT_TEAM: ${TEAM_ID}
-        CODE_SIGN_STYLE: Automatic
-        SWIFT_VERSION: "5.9"
-        ENABLE_PREVIEWS: "NO"
+      path: ${APP_NAME}/Info.plist
+      properties:
+        CFBundleDisplayName: ${APP_DISPLAY_NAME}
+        CFBundleDevelopmentRegion: ar
+        LSRequiresIPhoneOS: true
+        UILaunchScreen:
+          UIColorName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
